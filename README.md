@@ -1,71 +1,127 @@
-# Image Capture and Video Processing Using OpenCV
+# Image_Acqusition-_using_Web_Camera
+## Name: SUSINDHAR K M
+## Register no: 212223040218
+## Aim:
+ 
+To write a python program using OpenCV to capture the image from the web camera and do the following image manipulations.
+i) Write the frame as JPG 
+ii) Display the video 
+iii) Display the video by resizing the window
+iv) Rotate and display the video
 
----
-
-## Aim
-
-To write a Python program using OpenCV to capture an image from the webcam and perform the following operations:
-
-1. Write the frame as a JPG file  
-2. Display the video  
-3. Display the video by resizing the window  
-4. Rotate and display the video  
-
----
-
-## 🛠️ Software Used
-
-- Anaconda – Python 3.7  
-- Jupyter Notebook / VS Code  
-- OpenCV (`cv2`)  
-
----
-
-## ⚙️ Algorithm
-
+## Software Used
+Anaconda - Python 3.7
+## Algorithm
 ### Step 1:
-Import the required libraries and initialize the webcam using `cv2.VideoCapture()`.
-
+Import OpenCV Package.
 ### Step 2:
-Capture frames continuously from the webcam.
+Capture Video from Webcam. Use VideoCapture(0) to access the webcam and start capturing video.
 
 ### Step 3:
-Save a frame as a JPG image using `cv2.imwrite()`.
+Read Video or Image. Utilize 'imread' to read a video frame or image from the webcam.
 
 ### Step 4:
-Display the live video stream using `cv2.imshow()`.
+Save Image to File. Employ 'imwrite' to save the captured image to a file.
 
 ### Step 5:
-Resize the frame and rotate it using OpenCV functions, then display the processed frames.
+Display Video or Image. Use 'imshow' to display the captured video frame or image.
 
----
+### Step 6:
+End Program with 'q'. Allow the program to be terminated by pressing the 'q' key.
 
-## 💻 Program
+## Program:
+```
+### Developed By: Susindhar K M
+### Register No: 212223040218
 
-### Developed By:
-**Name:** ____________________________  
+### i) Write the frame as JPG file
+import cv2
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+import time
+cap = cv2.VideoCapture(0)
+ret, frame = cap.read()
+if ret:
+    cv2.imwrite("captured_frame.jpg", frame)
+cap.release()
+captured_image = cv2.imread('captured_frame.jpg')
+plt.imshow(captured_image[:,:,::-1])
+plt.title('Captured Frame')
+plt.axis('off')
+plt.show()
+ii) Display the video
+cap = cv2.VideoCapture(0)
 
-### Register No:
-____________________________  
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
 
----
+cap.release()
+iii) Display the video by resizing the window
+cap = cv2.VideoCapture(0)
 
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    resized_frame = cv2.resize(frame, (100, 150))  # Resize to 320x240
+    frame_rgb = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release()
+  
+iv) Rotate and display the video
+cap = cv2.VideoCapture(0)
+
+for i in range(50):
+    ret, frame = cap.read()
+    if not ret:
+        break
+    rotated_frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+    frame_rgb = cv2.cvtColor(rotated_frame, cv2.COLOR_BGR2RGB)
+    clear_output(wait=True)
+    plt.imshow(frame_rgb)
+    plt.axis('off')
+    plt.show()
+    time.sleep(0.05)
+
+cap.release() 
+```
 ## Output
 
 ### i) Write the frame as JPG image
-Captured image is saved as `captured_image.jpg`
+<img width="650" height="510" alt="image" src="https://github.com/user-attachments/assets/c2544e3a-db9f-4c95-8e6d-69dc97579b13" />
+
+
 
 ### ii) Display the video
-Live webcam video is displayed
+<img width="654" height="500" alt="image" src="https://github.com/user-attachments/assets/cbf03f1c-b53d-4af7-bd78-224257550f77" />
+
+
 
 ### iii) Display the video by resizing the window
-Video is shown in resized resolution (640 × 480)
+<img width="349" height="487" alt="image" src="https://github.com/user-attachments/assets/dd203b79-b92a-49fd-ac00-bbe63b307812" />
+
+
+
 
 ### iv) Rotate and display the video
-Video is displayed after rotation (90° clockwise)
+<img width="378" height="487" alt="image" src="https://github.com/user-attachments/assets/d3baf81e-d494-4c6e-9f39-1dab157e70c3" />
 
----
 
-## Result
 
-Thus, the image is successfully captured from the webcam and various video processing operations such as saving, displaying, resizing, and rotating are performed using OpenCV.
+
+
+## Result:
+Thus the image is accessed from webcamera and displayed using openCV.
